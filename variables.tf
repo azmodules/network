@@ -25,6 +25,6 @@ variable "nw_subnet_address_prefixes" {
 }
 
 variable "nw_subnet_names" {
-    type = string
+    type = list(string)
     default = ""
 }
