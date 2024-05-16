@@ -23,3 +23,8 @@ variable "nw_subnet_address_prefixes" {
     type = list(string)
     default = [ "" ]
 }
+
+variable "nw_subnet_names" {
+    type = string
+    default = ""
+}

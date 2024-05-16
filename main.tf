@@ -6,9 +6,11 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "snet" {
-    name = "${azurerm_virtual_network.vnet.name}-snet"
+    count = length(var.nw_subnet_names)
+
+    name = var.nw_subnet_names[count.index]
     resource_group_name = var.nw_resource_group_name
-    address_prefixes = var.nw_subnet_address_prefixes
+    address_prefixes = var.nw_subnet_address_prefixes[count.index]
     virtual_network_name = azurerm_virtual_network.vnet.name
     depends_on = [ azurerm_virtual_network.vnet ]
 }
